@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { fabric } from 'fabric';
-import { Grid } from '@mui/material';
+import { Grid, AppBar, Toolbar } from '@mui/material';
 import CanvasApp from './Canvas/Canvas';
 import CanvasControls from './Toolbox/Toolbox';
 import ContextMenu from './Canvas/ContextMenu/ContextMenu';
@@ -18,10 +18,12 @@ function App() {
       setCanvas,
     }}
     >
+      <AppBar position="fixed" sx={{ bgcolor: 'black' }}>
+        <Toolbar />
+      </AppBar>
       <Grid container spacing={2}>
         <Grid item xs={1}>
           <CanvasControls />
-
         </Grid>
         <Grid item xs={11}>
           <CanvasApp />

@@ -1,5 +1,5 @@
 import React, { ChangeEventHandler, useRef } from 'react';
-import { InsertPhotoTwoTone } from '@mui/icons-material';
+import CloudUploadTwoToneIcon from '@mui/icons-material/CloudUploadTwoTone';
 import { IconButton } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { addImg } from '../Canvas';
@@ -31,10 +31,10 @@ export default function ImageUploadButton() {
 
   return (
     <>
-      <IconButton color="primary" onClick={onClick}>
-        <InsertPhotoTwoTone width="100%" />
+      <IconButton sx={{ color: 'black' }} onClick={onClick}>
+        <CloudUploadTwoToneIcon width="100%" />
+        <div style={{ fontSize: '16px' }}>Uploads</div>
         <input onChange={onFileChange} style={{ display: 'none' }} ref={fileInputRef} type="file" />
-
       </IconButton>
     </>
   );
