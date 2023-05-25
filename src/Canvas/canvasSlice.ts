@@ -120,11 +120,48 @@ const canvasSlice = createSlice({
           options.height = canvas.height;
           options.width = imgElem.naturalWidth * ratio;
         }
+        // options.height = 120;
+        // options.width = 100;
+        // options.left = 0;
+        // options.top = 0;
         const image = new fabric.Image(action.payload, options);
+        // image.scaleToHeight(100);
+        // image.scaleToWidth(100);
 
         canvas.centerObject(image);
         canvas.add(image);
         canvas.requestRenderAll();
+        state.canvasObjects = canvas.getObjects().map((i) => i.toObject(['name', 'type']));
+      }
+    },
+    addVideo: (state, action: PayloadAction<HTMLVideoElement>) => {
+      const elem = getCanvas(state.canvasId);
+      if (elem && elem.fabric) {
+        const { fabric: canvas } = elem;
+        const id = uuidv4();
+        const options: fabric.IImageOptions = {
+          name: id,
+        };
+        options.width = canvas.width;
+        options.height = canvas.height;
+        options.objectCaching = false;
+        options.crossOrigin = 'anonymous';
+        options.scaleX = 1;
+        options.scaleY = 1;
+        options.dirty = false;
+        const video = new fabric.Image(action.payload, options);
+
+        canvas.centerObject(video);
+        canvas.add(video);
+        const videoEl = video.getElement() as HTMLVideoElement;
+        videoEl.play();
+        const playTrigger = () => {
+          if (videoEl.paused || videoEl.ended) return false;
+          canvas.requestRenderAll();
+          setTimeout(playTrigger, 20);
+          return true;
+        };
+        video.getElement().addEventListener('play', playTrigger, false);
         state.canvasObjects = canvas.getObjects().map((i) => i.toObject(['name', 'type']));
       }
     },
@@ -271,5 +308,6 @@ export const {
   addFadeInAnimation,
   addFadeOutAnimation,
   addScaleInAnimation,
+  addVideo,
 } = canvasSlice.actions;
 export const canvasReducer = canvasSlice.reducer;

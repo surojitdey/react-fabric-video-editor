@@ -2221,6 +2221,11 @@
     "@types/webpack-sources" "*"
     "source-map" "^0.6.0"
 
+"@types/webrtc@^0.0.35":
+  "integrity" "sha512-TUY+7ZYUBSYKNyFJ6hKS6UpZuejDHCGdJ5lBGzFMYSAq+Tqdqu3v3Rjtg+RyFl24Ko7OK8AYFGfsjMJzmB+dVQ=="
+  "resolved" "https://registry.npmjs.org/@types/webrtc/-/webrtc-0.0.35.tgz"
+  "version" "0.0.35"
+
 "@types/yargs-parser@*":
   "integrity" "sha512-37RSHht+gzzgYeobbG+KWryeAW8J33Nhr69cjTqSYymXVZEN9NbRYWoYlRtDhHKPVT1FyNKwaTPC1NynKZpzRA=="
   "resolved" "https://registry.npmjs.org/@types/yargs-parser/-/yargs-parser-20.2.0.tgz"

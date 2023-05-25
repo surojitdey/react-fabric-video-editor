@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
 import {
   addSlideTopAnimation,
   addSlideLeftAnimation,
@@ -38,7 +39,7 @@ const ObjectAnimation = () => {
     }
   };
   return (
-    <>
+    <FormControl sx={{ m: 1, minWidth: 80 }} size="small">
       <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
@@ -53,7 +54,7 @@ const ObjectAnimation = () => {
         <MenuItem value="fadeout">Fade Out</MenuItem>
         <MenuItem value="scalein">Scale In</MenuItem>
       </Select>
-    </>
+    </FormControl>
   );
 };
 export default ObjectAnimation;

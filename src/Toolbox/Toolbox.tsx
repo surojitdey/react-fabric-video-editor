@@ -20,6 +20,7 @@ import {
 
 import { UnsplashBrowser, AddSelected } from '../shared/components/unsplash';
 import ImageUploadButton from './ImageUploadButton';
+import VideoUploadButton from './VideoUploadButton';
 
 // TODO: Split every tool to its own component
 /**
@@ -92,6 +93,9 @@ export default function Toolbox() {
             >
               <TextFieldsTwoTone width="100%" />
             </IconButton>
+          </Grid>
+          <Grid item xs={6}>
+            <VideoUploadButton />
           </Grid>
           <Grid item xs={6}>
             <ImageUploadButton />
