@@ -1,5 +1,6 @@
 import React, { ChangeEventHandler, useRef } from 'react';
-import { Animation } from '@mui/icons-material';
+import VideocamTwoToneIcon from '@mui/icons-material/VideocamTwoTone';
+// import { Animation } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { addVideo } from '../Canvas';
@@ -78,10 +79,17 @@ export default function VideoUploadButton() {
 
   return (
     <>
-      <IconButton color="primary" onClick={onClick}>
+      {/* <IconButton color="primary" onClick={onClick}>
         <Animation width="100%" />
-        <input onChange={onFileChange} style={{ display: 'none' }} ref={fileInputRef} type="file" />
 
+      </IconButton> */}
+      <IconButton
+        sx={{ color: 'black' }}
+        onClick={onClick}
+      >
+        <VideocamTwoToneIcon width="100%" />
+        <input onChange={onFileChange} style={{ display: 'none' }} ref={fileInputRef} type="file" />
+        <div style={{ fontSize: '16px' }}>Videos</div>
       </IconButton>
       <video height="360" width="640" id="video" style={{ display: 'none' }}>
         <source src="" type="video/mp4" />

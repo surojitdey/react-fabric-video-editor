@@ -5,8 +5,8 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import AutoAwesomeMosaicTwoToneIcon from '@mui/icons-material/AutoAwesomeMosaicTwoTone';
 import TuneTwoToneIcon from '@mui/icons-material/TuneTwoTone';
-import InterestsTwoToneIcon from '@mui/icons-material/InterestsTwoTone';
-import VideocamTwoToneIcon from '@mui/icons-material/VideocamTwoTone';
+import InsightsTwoToneIcon from '@mui/icons-material/InsightsTwoTone';
+// import VideocamTwoToneIcon from '@mui/icons-material/VideocamTwoTone';
 import TextFieldsTwoTone from '@mui/icons-material/TextFieldsTwoTone';
 import TextSnippetTwoToneIcon from '@mui/icons-material/TextSnippetTwoTone';
 import ZoomInTwoToneIcon from '@mui/icons-material/ZoomInTwoTone';
@@ -91,7 +91,7 @@ export default function Toolbox() {
               <div style={{ fontSize: '16px' }}>Select</div>
             </IconButton>
           </Grid>
-          <Grid item xs={6}>
+          {/* <Grid item xs={6}>
             <IconButton
               onClick={() => {
                 dispatch(addText());
@@ -100,18 +100,18 @@ export default function Toolbox() {
             >
               <TextFieldsTwoTone width="100%" />
             </IconButton>
-          </Grid>
-          <Grid item xs={6}>
+          </Grid> */}
+          {/* <Grid item xs={6}>
             <VideoUploadButton />
-          </Grid>
-          <Grid item xs={6}>
+          </Grid> */}
+          {/* <Grid item xs={6}>
             <ImageUploadButton />
-          </Grid>
-          <Grid item xs={6}>
+          </Grid> */}
+          {/* <Grid item xs={6}>
             <IconButton color="primary" onClick={handleOpen}>
               <ImageSearchTwoToneIcon width="100%" />
             </IconButton>
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12}>
             <IconButton
@@ -156,7 +156,7 @@ export default function Toolbox() {
                 dispatch(addText());
               }}
             >
-              <InterestsTwoToneIcon width="100%" />
+              <InsightsTwoToneIcon width="100%" />
               <div style={{ fontSize: '16px' }}>Elements</div>
             </IconButton>
           </Grid>
@@ -172,13 +172,14 @@ export default function Toolbox() {
           </Grid>
 
           <Grid item xs={12}>
-            <IconButton
+            {/* <IconButton
               sx={{ color: 'black' }}
               onClick={handleOpen}
             >
               <VideocamTwoToneIcon width="100%" />
               <div style={{ fontSize: '16px' }}>Videos</div>
-            </IconButton>
+            </IconButton> */}
+            <VideoUploadButton />
           </Grid>
 
           <Grid item xs={12}>
