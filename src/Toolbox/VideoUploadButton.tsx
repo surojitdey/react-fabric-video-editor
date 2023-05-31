@@ -84,7 +84,7 @@ export default function VideoUploadButton() {
 
       </IconButton> */}
       <IconButton
-        sx={{ color: 'black' }}
+        sx={{ color: 'black', '&:hover': { backgroundColor: 'white' } }}
         onClick={onClick}
       >
         <VideocamTwoToneIcon width="100%" />
