@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box, Button, Divider, Grid, IconButton, Stack, Typography,
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import AutoAwesomeMosaicTwoToneIcon from '@mui/icons-material/AutoAwesomeMosaicTwoTone';
 import TuneTwoToneIcon from '@mui/icons-material/TuneTwoTone';
-import InsightsTwoToneIcon from '@mui/icons-material/InsightsTwoTone';
-// import VideocamTwoToneIcon from '@mui/icons-material/VideocamTwoTone';
+import ExtensionTwoToneIcon from '@mui/icons-material/ExtensionTwoTone';
 import TextFieldsTwoTone from '@mui/icons-material/TextFieldsTwoTone';
 import TextSnippetTwoToneIcon from '@mui/icons-material/TextSnippetTwoTone';
 import ZoomInTwoToneIcon from '@mui/icons-material/ZoomInTwoTone';
@@ -27,6 +26,9 @@ import {
 import { UnsplashBrowser, AddSelected } from '../shared/components/unsplash';
 import ImageUploadButton from './ImageUploadButton';
 import VideoUploadButton from './VideoUploadButton';
+import TemplatePanel from './TemplatePanel';
+import CustomizePanel from './CustomizePanel';
+import ElementPanel from './ElementPanel';
 
 // TODO: Split every tool to its own component
 /**
@@ -40,6 +42,10 @@ export default function Toolbox() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [showTemplates, setShowTemplates] = useState(false);
+  const [showCustomize, setShowCustomize] = useState(false);
+  const [showElements, setShowElements] = useState(false);
 
   if (!elem) return null;
   const { fabric: canvas } = elem;
@@ -71,18 +77,19 @@ export default function Toolbox() {
     >
       <Box display="flex" flexDirection="row" justifyContent="space-between" height="100%">
         <Grid
-          width="150px"
+          width="120px"
           height="90%"
           sx={{
             position: 'fixed',
             top: (theme) => theme.spacing(8),
             boxShadow: (theme) => theme.shadows[2],
+            backgroundColor: 'lightgray',
           }}
           container
         >
           <Grid item xs={12}>
             <IconButton
-              sx={{ color: 'black' }}
+              sx={{ color: 'black', '&:hover': { backgroundColor: 'white' } }}
               onClick={() => {
                 canvas.isDrawingMode = false;
               }}
@@ -91,31 +98,10 @@ export default function Toolbox() {
               <div style={{ fontSize: '16px' }}>Select</div>
             </IconButton>
           </Grid>
-          {/* <Grid item xs={6}>
-            <IconButton
-              onClick={() => {
-                dispatch(addText());
-              }}
-              color="primary"
-            >
-              <TextFieldsTwoTone width="100%" />
-            </IconButton>
-          </Grid> */}
-          {/* <Grid item xs={6}>
-            <VideoUploadButton />
-          </Grid> */}
-          {/* <Grid item xs={6}>
-            <ImageUploadButton />
-          </Grid> */}
-          {/* <Grid item xs={6}>
-            <IconButton color="primary" onClick={handleOpen}>
-              <ImageSearchTwoToneIcon width="100%" />
-            </IconButton>
-          </Grid> */}
 
           <Grid item xs={12}>
             <IconButton
-              sx={{ color: 'black' }}
+              sx={{ color: 'black', '&:hover': { backgroundColor: 'white' } }}
               onClick={() => {
                 canvas.isDrawingMode = true;
               }}
@@ -127,9 +113,11 @@ export default function Toolbox() {
 
           <Grid item xs={12}>
             <IconButton
-              sx={{ color: 'black' }}
+              sx={{ color: 'black', '&:hover': { backgroundColor: 'white' } }}
               onClick={() => {
-                canvas.isDrawingMode = false;
+                setShowTemplates(true);
+                setShowCustomize(false);
+                setShowElements(false);
               }}
             >
               <AutoAwesomeMosaicTwoToneIcon width="100%" />
@@ -139,9 +127,11 @@ export default function Toolbox() {
 
           <Grid item xs={12}>
             <IconButton
-              sx={{ color: 'black' }}
+              sx={{ color: 'black', '&:hover': { backgroundColor: 'white' } }}
               onClick={() => {
-                dispatch(addText());
+                setShowTemplates(false);
+                setShowCustomize(true);
+                setShowElements(false);
               }}
             >
               <TuneTwoToneIcon width="100%" />
@@ -151,19 +141,21 @@ export default function Toolbox() {
 
           <Grid item xs={12}>
             <IconButton
-              sx={{ color: 'black' }}
+              sx={{ color: 'black', '&:hover': { backgroundColor: 'white' } }}
               onClick={() => {
-                dispatch(addText());
+                setShowTemplates(false);
+                setShowCustomize(false);
+                setShowElements(true);
               }}
             >
-              <InsightsTwoToneIcon width="100%" />
+              <ExtensionTwoToneIcon width="100%" />
               <div style={{ fontSize: '16px' }}>Elements</div>
             </IconButton>
           </Grid>
 
           <Grid item xs={12}>
             <IconButton
-              sx={{ color: 'black' }}
+              sx={{ color: 'black', '&:hover': { backgroundColor: 'white' } }}
               onClick={handleOpen}
             >
               <ImageSearchTwoToneIcon width="100%" />
@@ -188,7 +180,7 @@ export default function Toolbox() {
 
           <Grid item xs={12}>
             <IconButton
-              sx={{ color: 'black' }}
+              sx={{ color: 'black', '&:hover': { backgroundColor: 'white' } }}
               onClick={() => {
                 dispatch(addText());
               }}
@@ -200,7 +192,7 @@ export default function Toolbox() {
 
           <Grid item xs={12}>
             <IconButton
-              sx={{ color: 'black' }}
+              sx={{ color: 'black', '&:hover': { backgroundColor: 'white' } }}
               onClick={() => {
                 dispatch(addText());
               }}
@@ -212,7 +204,7 @@ export default function Toolbox() {
 
           <Grid item xs={12}>
             <IconButton
-              sx={{ color: 'black' }}
+              sx={{ color: 'black', '&:hover': { backgroundColor: 'white' } }}
               onClick={() => {
                 dispatch(addText());
               }}
@@ -225,7 +217,7 @@ export default function Toolbox() {
           <Grid item xs={12}>
             <IconButton
               disabled
-              sx={{ color: 'black' }}
+              sx={{ color: 'black', '&:hover': { backgroundColor: 'white' } }}
               onClick={() => {
                 dispatch(addText());
               }}
@@ -238,7 +230,7 @@ export default function Toolbox() {
           <Grid item xs={12}>
             <IconButton
               disabled
-              sx={{ color: 'black' }}
+              sx={{ color: 'black', '&:hover': { backgroundColor: 'white' } }}
               onClick={() => {
                 dispatch(addText());
               }}
@@ -252,6 +244,22 @@ export default function Toolbox() {
             <ObjectAnimation />
           </Grid>
         </Grid>
+
+        <div
+          style={{
+            top: 60,
+            left: 120,
+            position: 'fixed',
+            width: '300px',
+            height: '650px',
+            border: '1px solid lightgray',
+            borderRadius: '1px',
+          }}
+        >
+          {showTemplates && <TemplatePanel />}
+          {showCustomize && <CustomizePanel />}
+          {showElements && <ElementPanel />}
+        </div>
 
         <Stack
           sx={{
