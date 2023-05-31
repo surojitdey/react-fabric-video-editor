@@ -29,6 +29,7 @@ import VideoUploadButton from './VideoUploadButton';
 import TemplatePanel from './TemplatePanel';
 import CustomizePanel from './CustomizePanel';
 import ElementPanel from './ElementPanel';
+import ImagePanel from './ImagePanel';
 
 // TODO: Split every tool to its own component
 /**
@@ -40,12 +41,13 @@ export default function Toolbox() {
   const canvasObjects = useSelector((state: RootState) => state.canvas.canvasObjects);
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  // const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const [showTemplates, setShowTemplates] = useState(false);
   const [showCustomize, setShowCustomize] = useState(false);
   const [showElements, setShowElements] = useState(false);
+  const [showImages, setShowImages] = useState(false);
 
   if (!elem) return null;
   const { fabric: canvas } = elem;
@@ -118,6 +120,7 @@ export default function Toolbox() {
                 setShowTemplates(true);
                 setShowCustomize(false);
                 setShowElements(false);
+                setShowImages(false);
               }}
             >
               <AutoAwesomeMosaicTwoToneIcon width="100%" />
@@ -132,6 +135,7 @@ export default function Toolbox() {
                 setShowTemplates(false);
                 setShowCustomize(true);
                 setShowElements(false);
+                setShowImages(false);
               }}
             >
               <TuneTwoToneIcon width="100%" />
@@ -146,6 +150,7 @@ export default function Toolbox() {
                 setShowTemplates(false);
                 setShowCustomize(false);
                 setShowElements(true);
+                setShowImages(false);
               }}
             >
               <ExtensionTwoToneIcon width="100%" />
@@ -156,7 +161,12 @@ export default function Toolbox() {
           <Grid item xs={12}>
             <IconButton
               sx={{ color: 'black', '&:hover': { backgroundColor: 'white' } }}
-              onClick={handleOpen}
+              onClick={() => {
+                setShowTemplates(false);
+                setShowCustomize(false);
+                setShowElements(false);
+                setShowImages(true);
+              }}
             >
               <ImageSearchTwoToneIcon width="100%" />
               <div style={{ fontSize: '16px' }}>Images</div>
@@ -259,6 +269,7 @@ export default function Toolbox() {
           {showTemplates && <TemplatePanel />}
           {showCustomize && <CustomizePanel />}
           {showElements && <ElementPanel />}
+          {showImages && <ImagePanel />}
         </div>
 
         <Stack
