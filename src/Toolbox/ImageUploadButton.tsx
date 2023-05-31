@@ -31,7 +31,7 @@ export default function ImageUploadButton() {
 
   return (
     <>
-      <IconButton sx={{ color: 'black' }} onClick={onClick}>
+      <IconButton sx={{ color: 'black', '&:hover': { backgroundColor: 'white' } }} onClick={onClick}>
         <CloudUploadTwoToneIcon width="100%" />
         <div style={{ fontSize: '16px' }}>Uploads</div>
         <input onChange={onFileChange} style={{ display: 'none' }} ref={fileInputRef} type="file" />
